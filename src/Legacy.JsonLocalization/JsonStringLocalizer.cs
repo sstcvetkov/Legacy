@@ -155,31 +155,39 @@ namespace Legacy.JsonLocalization
             }
         }
 
-        private void BuildResourcesCache(string culture)
+private void BuildResourcesCache(string culture)
         {
-            _resourcesCache.GetOrAdd(culture, _ =>
-            {
-                var resourceFile = $"{culture}.json";
-                if (_resourceName != null)
-                {
-                    resourceFile = String.Join(".", _resourceName, resourceFile);
-                }
+			_resourcesCache.GetOrAdd(culture, _ =>
+			{
+				var cultureFile = $"{culture}.json";
+				var cultureResx = GetResxEnumerable(cultureFile);
 
-                _searchedLocation = Path.Combine(_resourcesPath, resourceFile);
-                IEnumerable<KeyValuePair<string, string>> value = null;
+				var baseFile = $"json";
+				var baseResx = GetResxEnumerable(baseFile);
 
-                if (File.Exists(_searchedLocation))
-                {
-                    var builder = new ConfigurationBuilder()
-                    .SetBasePath(_resourcesPath)
-                    .AddJsonFile(resourceFile, optional: false, reloadOnChange: true);
-
-                    var config = builder.Build();
-                    value = config.AsEnumerable();
-                }
-
-                return value;
-            });
+				return cultureResx.Union(baseResx.Where(x => !cultureResx.Any(z => z.Key == x.Key)));
+			});
         }
-    }
+
+		private IEnumerable<KeyValuePair<string, string>> GetResxEnumerable(string cultureFile)
+		{
+			if (_resourceName != null)
+				cultureFile = string.Join(".", _resourceName, cultureFile);
+
+			_searchedLocation = Path.Combine(_resourcesPath, cultureFile);
+			IEnumerable<KeyValuePair<string, string>> value = Array.Empty<KeyValuePair<string, string>>();
+
+			if (File.Exists(_searchedLocation))
+			{
+				var builder = new ConfigurationBuilder()
+				.SetBasePath(_resourcesPath)
+				.AddJsonFile(cultureFile, optional: false, reloadOnChange: true);
+
+				var config = builder.Build();
+				value = config.AsEnumerable();
+			}
+
+			return value;
+		}
+	}
 }
