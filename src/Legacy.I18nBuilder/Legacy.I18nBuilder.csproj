@@ -6,6 +6,7 @@
 		<PublishTrimmed>true</PublishTrimmed>
 		<PublishSingleFile>true</PublishSingleFile>
 		<CrossGenDuringPublish>false</CrossGenDuringPublish>
+		<Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
