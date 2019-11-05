@@ -17,7 +17,7 @@ namespace Legacy.I18nBuilder
 		/// <summary>
 		/// Main
 		/// </summary>
-		/// <param name="args">json/resx inputDir outputDir culture</param>
+		/// <param name="args">json/resx inputDir outputDir exceptionDir1 ...</param>
 		static void Main(string[] args)
 		{
 			if (args == null || args.Length < 3)
@@ -29,13 +29,18 @@ namespace Legacy.I18nBuilder
 			if (!Directory.CreateDirectory(args[2]).Exists)
 				throw new ArgumentException("Failed to create output directory.");
 
+			var exclude = args.Length > 3 
+				? args.Skip(3) : Array.Empty<string>();
+
 			CheckResourceType(args[0]);
 
 			var resources = Directory.GetFiles(args[1], $"*.{args[0]}", SearchOption.AllDirectories)
+				.Where(x => !exclude.Any(z => x.StartsWith(z)))
 				.Select(x => x.Replace(args[1] + Path.DirectorySeparatorChar, string.Empty))
 				.Select(x => x.Substring(0, x.IndexOf('.'))).Distinct();
 
 			var cultures = Directory.GetFiles(args[1], $"*.{args[0]}", SearchOption.AllDirectories)
+				.Where(x => !exclude.Any(z => x.StartsWith(z)))
 				.Select(x => x.Replace(args[1] + Path.DirectorySeparatorChar, string.Empty))
 				.Select(x => x.Replace($".{args[0]}", string.Empty))
 				.Where(x => x.Contains( "."))
