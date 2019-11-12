@@ -38,7 +38,7 @@ namespace Legacy.JsonLocalization
 
             var typeInfo = resourceSource.GetTypeInfo();
             var assembly = typeInfo.Assembly;
-            var resourcesPath = Path.Combine(PathHelpers.GetApplicationRoot(), GetResourcePath(assembly));
+            var resourcesPath = Path.Combine(Directory.GetCurrentDirectory(), GetResourcePath(assembly));
 
             return CreateJsonStringLocalizer(resourcesPath, typeInfo.Name);
         }
@@ -57,7 +57,7 @@ namespace Legacy.JsonLocalization
 
             var assemblyName = new AssemblyName(location);
             var assembly = Assembly.Load(assemblyName);
-            var resourcesPath = Path.Combine(PathHelpers.GetApplicationRoot(), GetResourcePath(assembly));
+            var resourcesPath = Path.Combine(Directory.GetCurrentDirectory(), GetResourcePath(assembly));
             string resourceName = null;
 
             if (_resourcesType == ResourcesType.TypeBased)

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text;
 
 namespace Legacy.JsonLocalization
@@ -13,7 +14,7 @@ namespace Legacy.JsonLocalization
 
         public StringLocalizer(IHostingEnvironment env, IStringLocalizerFactory factory)
         {
-            _localizer = factory.Create(string.Empty, PathHelpers.GetApplicationRoot());
+            _localizer = factory.Create(string.Empty, Directory.GetCurrentDirectory());
         }
 
         public LocalizedString this[string name] => _localizer[name];
