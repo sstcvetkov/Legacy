@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legacy.ResxValidator", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legacy.ResxValidator.Tests", "src\Legacy.ResxValidator.Tests\Legacy.ResxValidator.Tests.csproj", "{C749A2CB-AB16-4007-8108-5D7B24EF3ECE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legacy.JsonLocalization", "src\Legacy.JsonLocalization\Legacy.JsonLocalization.csproj", "{53266177-EF90-4E9A-8FDD-ED4269DA877A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legacy.JsonLocalization", "src\Legacy.JsonLocalization\Legacy.JsonLocalization.csproj", "{53266177-EF90-4E9A-8FDD-ED4269DA877A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legacy.JsonLocalization.Tests", "src\Legacy.JsonLocalization.Tests\Legacy.JsonLocalization.Tests.csproj", "{1CD32712-1530-48C9-86A5-32A581EC5B40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Legacy.JsonLocalization.Tests", "src\Legacy.JsonLocalization.Tests\Legacy.JsonLocalization.Tests.csproj", "{1CD32712-1530-48C9-86A5-32A581EC5B40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legacy.I18nBuilder", "src\Legacy.I18nBuilder\Legacy.I18nBuilder.csproj", "{4FBDF9D6-0BF4-480F-ACB0-71B5F1A28EF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1CD32712-1530-48C9-86A5-32A581EC5B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CD32712-1530-48C9-86A5-32A581EC5B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CD32712-1530-48C9-86A5-32A581EC5B40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FBDF9D6-0BF4-480F-ACB0-71B5F1A28EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FBDF9D6-0BF4-480F-ACB0-71B5F1A28EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FBDF9D6-0BF4-480F-ACB0-71B5F1A28EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FBDF9D6-0BF4-480F-ACB0-71B5F1A28EF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
