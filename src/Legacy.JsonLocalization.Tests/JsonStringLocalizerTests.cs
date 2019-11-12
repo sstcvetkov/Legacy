@@ -28,7 +28,7 @@ namespace Legacy.JsonLocalization.Tests
                 .Returns(() => new LocalizationOptions { ResourcesPath = "Resources" });
             _logger = NullLogger.Instance;
 
-            var resourcePath = Path.Combine(PathHelpers.GetApplicationRoot(), _localizationOptions.Object.Value.ResourcesPath);
+            var resourcePath = Path.Combine(Directory.GetCurrentDirectory(), _localizationOptions.Object.Value.ResourcesPath);
             _localizer = new JsonStringLocalizer(resourcePath, nameof(Test), _logger);
         }
 
