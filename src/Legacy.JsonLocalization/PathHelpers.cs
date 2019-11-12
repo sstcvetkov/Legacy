@@ -13,7 +13,9 @@ namespace Legacy.JsonLocalization
         public static string GetApplicationRoot()
         {
             var exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
-            var appPathMatcher = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+bin)");
+            var directorySeparator = Path.Combine("x", "x").Replace("x", String.Empty);
+            var pattern = @"(?<!fil)[A-Za-z]:\" + directorySeparator + @"+[\S\s]*?(?=\" + directorySeparator + @"+bin)";
+            var appPathMatcher = new Regex(pattern);
             var appRoot = appPathMatcher.Match(exePath).Value;
 
             return appRoot;
